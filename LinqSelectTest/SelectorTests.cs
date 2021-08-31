@@ -14,11 +14,17 @@ namespace LinqSelectTest
             var numbers = new List<int> { 1, 2, 3 };
 
             //Act
-            var numbersAddOne = numbers.AddsOne();
+            var numbersAddOne = numbers.Transform(TransformNum);
+            //Arrange
             var convertedNumbers = new List<int> { 2, 3, 4 };
             //Assert
             Assert.Equal(convertedNumbers, numbersAddOne);
 
+            int TransformNum(int num)  //veliau galima sukurt anonimus, pakolkas pasizaist su debugeriu
+            {
+                int transformedNumber = num + 1;
+                return transformedNumber;
+            }
         }
 
         [Fact]
