@@ -62,11 +62,57 @@ namespace LinqSelectTest
             var numbers = new int[] { 2, 3, 4 };
 
             //Act
-            var numberRemainders = numbers.Transform(num => num % 3); 
+            var numberRemainders = numbers.Transform(num => num % 3);
             var convertedNumbers = new int[] { 2, 0, 1 };
 
             //Assert
             Assert.Equal(convertedNumbers, numberRemainders);
         }
+
+        [Fact]
+        public void Integer_To_String()
+        {
+            //Arrange
+            var numbers = new int[] { 1, 2, 3 };
+
+            //Act
+            var converted = numbers.Transform(x => x.ToString());
+            var convertedNumbers = new string[] { "1", "2", "3" };
+
+            //Assert
+            Assert.Equal(convertedNumbers, converted);
+        }
+
+        [Fact]
+        public void Add_Exclamation_Mark_To_String()
+        {
+            //Arrange
+            var numbers = new string[] { "One", "Two", "Three" };
+
+            //Act
+            var converted = numbers.Transform(x => x + "!");
+            var convertedNumbers = new string[] { "One!", "Two!", "Three!" };
+
+            //Assert
+            Assert.Equal(convertedNumbers, converted);
+        }
+
+        [Fact]
+        public void Check_If_String_Has_All_Capitals()
+        {
+            //Arrange
+            var strings = new string[] { "A", "Ab", "BC" };
+
+            //Act
+            var isCapital = strings.Transform(x => x == x.ToUpper());
+            var isCapitalResult = new bool[] { true, false, true };
+
+            //Assert
+            Assert.Equal(isCapitalResult, isCapital);
+
+        }
     }
 }
+
+
+
